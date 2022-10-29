@@ -61,12 +61,40 @@ function findInvalidCards(array) {
     return invalidCards;
 }
 findInvalidCards(batch)
-
+let cardCompanies = [];
 function idInvalidCardCompanies(array) {
-    return array;
+    const amex = [];
+    const visa =[];
+    const mastercard = [];
+    const discover = [];
+    for (const element in array) {
+        if (array[element][0] === 3) {
+            amex.push(array[element[0]])
+        } else if (array[element][0] === 4) {
+            visa.push(array[element[0]])
+        } else if (array[element][0] === 5) {
+            mastercard.push(array[element[0]])
+        } else if (array[element][0] === 6) {
+            discover.push(array[element[0]])
+        }
+        
+    }
+    if (amex.length > 0) {
+        cardCompanies.push('Amex')
+    }
+    if (visa.length > 0) {
+        cardCompanies.push('Visa')
+    }
+    if (mastercard.length > 0) {
+        cardCompanies.push('Mastercard')
+    }
+    if (discover.length > 0) {
+        cardCompanies.push('Discover')
+    }
+    return cardCompanies;
 }
 const Cards = invalidCards;
-console.log(idInvalidCardCompanies(findInvalidCards(batch)))
+console.log(idInvalidCardCompanies(invalidCards))
 //console.log(invalidCards)
 
 
